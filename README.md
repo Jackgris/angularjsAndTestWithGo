@@ -9,3 +9,19 @@ We will use Beegae, Ginkgo, Gomega, Jasmine, AngularJS and Agouti
 - Agouti https://github.com/sclevine/agouti
 - Jasmine http://jasmine.github.io
 - AngularJS https://angularjs.org
+
+### Running the project
+
+In the folder `main`
+
+```
+$ goapp serve
+```
+
+### Running the tests
+
+In the folder `main`
+
+```
+$ goapp test
+```
