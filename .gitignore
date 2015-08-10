@@ -6,6 +6,9 @@
 # Folders
 _obj
 _test
+static/js/angular/*
+static/js/jasmine/*
+!static/js/jasmine/SpecRunner.html
 
 # Architecture specific extensions/prefixes
 *.[568vq]
