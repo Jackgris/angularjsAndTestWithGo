@@ -24,7 +24,7 @@ var _ = Describe("Angular", func() {
 
 		Expect(page.Navigate("http://localhost:8080")).To(Succeed())
 		phonesInList := page.Find("ul.phones").All("li")
-		query := page.Find("input")
+		query := page.FindByName("query")
 
 		Eventually(phonesInList).Should(HaveCount(3))
 		Expect(query.Fill("nexus")).To(Succeed())

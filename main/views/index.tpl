@@ -14,7 +14,7 @@
         <div class="col-md-2">
           <!--Sidebar content-->
 
-          Search: <input ng-model="query">
+          Search: <input name="query" ng-model="query">
           <select ng-model="orderProp">
             <option value="name">Alphabetical</option>
             <option value="age">Newest</option>
