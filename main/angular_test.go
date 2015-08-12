@@ -23,8 +23,8 @@ var _ = Describe("Angular", func() {
 	It("should filter the phone list as a user types into the search box", func() {
 
 		Expect(page.Navigate("http://localhost:8080")).To(Succeed())
-		phonesInList := page.Find(".phones").All(".phone")
-		query := page.Find(".query")
+		phonesInList := page.Find("ul.phones").All("li")
+		query := page.Find("input")
 
 		Eventually(phonesInList).Should(HaveCount(3))
 		Expect(query.Fill("nexus")).To(Succeed())
