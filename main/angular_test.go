@@ -26,11 +26,11 @@ var _ = Describe("Angular", func() {
 		phonesInList := page.Find("ul.phones").All("li")
 		query := page.FindByName("query")
 
-		Eventually(phonesInList).Should(HaveCount(3))
+		Eventually(phonesInList).Should(HaveCount(20))
 		Expect(query.Fill("nexus")).To(Succeed())
 		Eventually(phonesInList).Should(HaveCount(1))
 		Expect(query.Fill("motorola")).To(Succeed()) // Note: Fill clears automatically
-		Eventually(phonesInList).Should(HaveCount(2))
+		Eventually(phonesInList).Should(HaveCount(8))
 	})
 
 	It("should be possible to control phone order via the drop down select box", func() {
