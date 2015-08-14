@@ -24,7 +24,7 @@ $ goapp serve
 
 ### Running the tests
 
-In the folder `main`
+In the folder `tests`
 
 ```
 $ goapp test
