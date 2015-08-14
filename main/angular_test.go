@@ -35,7 +35,7 @@ var _ = Describe("Angular", func() {
 
 	It("should be possible to control phone order via the drop down select box", func() {
 
-		phoneNameColumn := page.Find("ul.phones").All("li").All("span")
+		phoneNameColumn := page.Find("ul.phones").AllByName("phone-name")
 		query := page.FindByName("query")
 		selected := page.Find("select")
 
@@ -46,5 +46,15 @@ var _ = Describe("Angular", func() {
 		Expect(selected.Select("Alphabetical")).To(Succeed())
 		Expect(phoneNameColumn.At(0)).To(HaveText("MOTOROLA XOOM\u2122"))
 		Expect(phoneNameColumn.At(1)).To(HaveText("Motorola XOOM\u2122 with Wi-Fi"))
+	})
+
+	It("should render phone specific links", func() {
+
+		query := page.FindByName("query")
+		phoneNameColumn := page.Find("ul.phones").AllByName("phone-name")
+
+		Expect(query.Fill("nexus")).To(Succeed())
+		Expect(phoneNameColumn.At(0).Click()).To(Succeed())
+		Expect(page).To(HaveURL("http://localhost:8080/#/phones/nexus-s"))
 	})
 })
