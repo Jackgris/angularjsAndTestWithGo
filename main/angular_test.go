@@ -40,12 +40,12 @@ var _ = Describe("Angular", func() {
 		selected := page.Find("select")
 
 		Expect(query.Fill("tablet")).To(Succeed()) //let's narrow the dataset to make the test assertions shorter
-		Expect(phoneNameColumn.At(0)).To(HaveText("Motorola XOOM\u2122 with Wi-Fi"))
-		Expect(phoneNameColumn.At(1)).To(HaveText("MOTOROLA XOOM\u2122"))
+		Eventually(phoneNameColumn.At(0)).Should(HaveText("Motorola XOOM\u2122 with Wi-Fi"))
+		Eventually(phoneNameColumn.At(1)).Should(HaveText("MOTOROLA XOOM\u2122"))
 
 		Expect(selected.Select("Alphabetical")).To(Succeed())
-		Expect(phoneNameColumn.At(0)).To(HaveText("MOTOROLA XOOM\u2122"))
-		Expect(phoneNameColumn.At(1)).To(HaveText("Motorola XOOM\u2122 with Wi-Fi"))
+		Eventually(phoneNameColumn.At(0)).Should(HaveText("MOTOROLA XOOM\u2122"))
+		Eventually(phoneNameColumn.At(1)).Should(HaveText("Motorola XOOM\u2122 with Wi-Fi"))
 	})
 
 	It("should render phone specific links", func() {
@@ -55,6 +55,6 @@ var _ = Describe("Angular", func() {
 
 		Expect(query.Fill("nexus")).To(Succeed())
 		Expect(phoneNameColumn.At(0).Click()).To(Succeed())
-		Expect(page).To(HaveURL("http://localhost:8080/#/phones/nexus-s"))
+		Eventually(page).Should(HaveURL("http://localhost:8080/#/phones/nexus-s"))
 	})
 })
