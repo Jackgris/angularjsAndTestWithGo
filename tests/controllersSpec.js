@@ -1,4 +1,7 @@
+'use strict';
+
 describe('PhoneCat controllers', function(){
+
     describe('PhoneLisCtrl', function(){ 
         var scope, ctrl, $httpBackend;
 
@@ -12,6 +15,7 @@ describe('PhoneCat controllers', function(){
             $httpBackend = _$httpBackend_;
             $httpBackend.expectGET('/static/js/phones.json').
                 respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+
             scope = $rootScope.$new();
             ctrl = $controller('PhoneListCtrl', {$scope: scope});
         }));
@@ -27,5 +31,8 @@ describe('PhoneCat controllers', function(){
         it('should set the default value of orderProp model', function() {
             expect(scope.orderProp).toBe('age');
         });
+    });
+
+    describe('PhoneDetailCtrl', function(){
     });
 });
