@@ -9,6 +9,7 @@
     <script src="static/js/angular/angular-route.js"></script>
     <script src="static/js/controllers.js"></script>
     <script src="static/js/app.js"></script>
+    <script src="static/js/filters.js"></script>
   </head>
   <body>
     
