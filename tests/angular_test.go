@@ -81,8 +81,8 @@ var _ = Describe("Angular", func() {
 			Expect(page.Destroy()).To(Succeed())
 		})
 
-		It("should display placeholder page with phoneId", func() {
-			Eventually(page.FindByName("phone-detail")).Should(HaveText("nexus-s"))
+		It("should display nexus-s page", func() {
+			Eventually(page.Find("h1")).Should(HaveText("Nexus S"))
 		})
 	})
 })
