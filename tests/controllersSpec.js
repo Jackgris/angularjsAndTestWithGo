@@ -2,7 +2,20 @@
 
 describe('PhoneCat controllers', function(){
 
+    beforeEach(function(){
+        jasmine.addMatchers({
+            toEqualData: function() {
+                return {
+                    compare: function(actual, expected) {
+                        return { pass: angular.equals(actual, expected) };
+                    }
+                };
+            }
+        });
+    });
+
     beforeEach(module('phonecatApp'));
+    beforeEach(module('phonecatServices'));
 
     describe('PhoneLisCtrl', function(){ 
         var scope, ctrl, $httpBackend;
@@ -15,7 +28,7 @@ describe('PhoneCat controllers', function(){
         // with the same name as the service in order to avoid a name conflict
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/static/js/phones.json').
+            $httpBackend.expectGET('static/js/json/phones.json').
                 respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 
             scope = $rootScope.$new();
@@ -23,10 +36,10 @@ describe('PhoneCat controllers', function(){
         }));
 
         it('should create "phones" model with 2 phones fetched from xhr', function() {
-            expect(scope.phones).toBeUndefined();
+            expect(scope.phones).toEqualData([]);
             $httpBackend.flush();
 
-            expect(scope.phones).toEqual([{name: 'Nexus S'},
+            expect(scope.phones).toEqualData([{name: 'Nexus S'},
                                           {name: 'Motorola DROID'}]);
         });
 
@@ -47,7 +60,7 @@ describe('PhoneCat controllers', function(){
 
         beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/static/js/json/xyz.json').respond(xyzPhoneData());
+            $httpBackend.expectGET('static/js/json/xyz.json').respond(xyzPhoneData());
 
             $routeParams.phoneId = 'xyz';
             scope = $rootScope.$new();
@@ -56,10 +69,10 @@ describe('PhoneCat controllers', function(){
 
 
         it('should fetch phone detail', function() {
-            expect(scope.phone).toBeUndefined();
+            expect(scope.phone).toEqualData({});
             $httpBackend.flush();
 
-            expect(scope.phone).toEqual(xyzPhoneData());
+            expect(scope.phone).toEqualData(xyzPhoneData());
         });
     });
 });

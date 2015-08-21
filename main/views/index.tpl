@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="static/css/app.css">
     <script src="static/js/angular/angular.js"></script>
     <script src="static/js/angular/angular-route.js"></script>
+    <script src="static/js/angular/angular-resource.js"></script>
     <script src="static/js/controllers.js"></script>
     <script src="static/js/app.js"></script>
     <script src="static/js/filters.js"></script>
+    <script src="static/js/services.js"></script>
   </head>
   <body>
     
