@@ -86,16 +86,16 @@ var _ = Describe("Angular", func() {
 		})
 
 		It("should display the first phone image as the main phone image", func() {
-			image := page.Find("img.phone")
+			image := page.All("img.phone").At(0)
 			Eventually(image).Should(HaveAttribute("ng-src", "static/img/phones/nexus-s.0.jpg"))
 		})
 
 		It("should swap main image if a thumbnail image is clicked on", func() {
 			images := page.All("ul.phone-thumbs").AllByName("image-see")
 			Expect(images.At(2).Click()).To(Succeed())
-			Eventually(page.Find("img.phone")).Should(HaveAttribute("ng-src", "static/img/phones/nexus-s.2.jpg"))
+			Eventually(page.All("img.phone").At(2)).Should(HaveAttribute("ng-src", "static/img/phones/nexus-s.2.jpg"))
 			Expect(images.At(0).Click()).To(Succeed())
-			Eventually(page.Find("img.phone")).Should(HaveAttribute("ng-src", "static/img/phones/nexus-s.0.jpg"))
+			Eventually(page.All("img.phone").At(0)).Should(HaveAttribute("ng-src", "static/img/phones/nexus-s.0.jpg"))
 		})
 	})
 })
